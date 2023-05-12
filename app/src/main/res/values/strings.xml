@@ -11,4 +11,8 @@
     <string name="app_desc_with_appname">Wallet Wizard - Stay in Control, Let Wallet Wizard Monitor Your Finances!</string>
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="cd_bg">RectangleGreenBackground</string>
+    <string name="current_balance_title">Your Balance :</string>
+    <string name="cd_dl">dottedLineSection</string>
+    <string name="add_balance_icon">Add Balance Icon</string>
 </resources>
