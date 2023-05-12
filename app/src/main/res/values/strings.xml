@@ -15,4 +15,19 @@
     <string name="current_balance_title">Your Balance :</string>
     <string name="cd_dl">dottedLineSection</string>
     <string name="add_balance_icon">Add Balance Icon</string>
+    <string name="title_transaction_hint">Enter your title transaction...</string>
+    <string name="nominal_transaction_hint">Enter nominal transaction...</string>
+    <string name="credit_debit_hint">Credit/Debit</string>
+    <string name="setting_button">Setting Button</string>
+    <string name="user_dummy">User Dummy.</string>
+    <string name="hello">Hello,</string>
+    <string name="income_title">Income :</string>
+    <string name="outcome_title">Outcome :</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="see_more">See More</string>
+    <string name="fabutton">FAButton</string>
+    <string-array name="transactionType">
+        <item>Credit</item>
+        <item>Debit</item>
+    </string-array>
 </resources>

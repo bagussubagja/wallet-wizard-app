@@ -9,5 +9,30 @@
         android:id="@+id/homeFragment"
         android:name="com.mantequilla.walletwizardapp.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addTransactionActivity"
+            app:destination="@id/addTransactionActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recentTransactionFragment"
+            app:destination="@id/recentTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTransactionActivity"
+        android:name="com.mantequilla.walletwizardapp.fragments.AddTransactionFragment"
+        android:label="fragment_add_transaction_activity"
+        tools:layout="@layout/fragment_add_transaction" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.mantequilla.walletwizardapp.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/recentTransactionFragment"
+        android:name="com.mantequilla.walletwizardapp.fragments.RecentTransactionFragment"
+        android:label="fragment_recent_transaction"
+        tools:layout="@layout/fragment_recent_transaction" />
 </navigation>

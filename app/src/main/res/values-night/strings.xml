@@ -2,4 +2,8 @@
 <resources>
     <string name="login_text">Login</string>
     <string name="app_desc_with_appname">Wallet Wizard - Stay in Control, Let Wallet Wizard Monitor Your Finances!</string>
+    <string name="nominal_transaction_hint">Enter nominal transaction...</string>
+    <string name="setting_button">Setting Button</string>
+    <string name="user_dummy">User Dummy.</string>
+    <string name="hello">Hello,</string>
 </resources>

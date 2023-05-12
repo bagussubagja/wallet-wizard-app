@@ -45,14 +45,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello,"
+                android:text="@string/hello"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Dummy."
+                tools:text="@string/user_dummy"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen20sp"
                 android:textStyle="bold" />
@@ -61,15 +61,16 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/ivSettingButton"
         android:layout_width="@dimen/dimen30dp"
         android:layout_height="@dimen/dimen30dp"
-        android:src="@drawable/round_account_balance_wallet_24"
+        android:src="@drawable/round_settings_24"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         android:layout_marginEnd="@dimen/dimen20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white"
-        android:contentDescription="@string/add_balance_icon" />
+        android:contentDescription="@string/setting_button" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -109,7 +110,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                android:text="Rp. 0" />
+                tools:text="Rp. 0" />
 
 
             <ImageView
@@ -140,7 +141,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -153,14 +155,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen8dp"
-                            android:text="Income :" />
+                            android:text="@string/income_title" />
 
                         <TextView
                             android:id="@+id/tvIncomeData"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen4dp"
-                            android:text="Rp.700000" />
+                            tools:text="Rp.700000" />
                     </LinearLayout>
 
 
@@ -176,7 +178,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen8dp"
-                            android:text="Outcome :" />
+                            android:text="@string/outcome_title" />
 
                         <TextView
                             android:id="@+id/tvOutcomeData"
@@ -184,7 +186,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen4dp"
-                            android:text="Rp.100000" />
+                            tools:text="Rp.100000" />
                     </LinearLayout>
 
 
@@ -203,7 +205,7 @@
         android:id="@+id/tvRecentActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recent Activity"
+        android:text="@string/recent_activity"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/dimen16dp"
         android:layout_marginStart="@dimen/dimen16dp"
@@ -212,10 +214,11 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <TextView
+        android:id="@+id/tvSeeMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen16dp"
-        android:text="See More"
+        android:text="@string/see_more"
         android:textSize="@dimen/dimen18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentActivityTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -233,7 +236,7 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
+        android:id="@+id/fabToAddTransactionActivity"
         android:backgroundTint="@color/greenPrimary"
         app:tint="@color/white"
         android:layout_width="wrap_content"
@@ -242,6 +245,6 @@
         android:src="@drawable/round_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:contentDescription="@string/fabutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
