@@ -7,5 +7,15 @@ class HistoryTransactionRepository
 @Inject
 constructor(private val apiService: ApiService)
 {
-    suspend fun getHistoryTransaction() = apiService.getHistoryTransaction()
+    suspend fun getHistoryTransaction(
+        authHeader: String,
+        fields : String,
+        apikey: String,
+        userId: String
+    ) = apiService.getHistoryTransaction(
+        authHeader = authHeader,
+        fields = fields,
+        apiKey = apikey,
+        userId = userId,
+    )
 }

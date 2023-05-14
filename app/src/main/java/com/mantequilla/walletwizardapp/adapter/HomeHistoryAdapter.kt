@@ -1,13 +1,13 @@
 package com.mantequilla.walletwizardapp.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mantequilla.walletwizardapp.databinding.ItemRecentActivityBinding
-import com.mantequilla.walletwizardapp.models.history.HistoryTransactionModel
-import com.mantequilla.walletwizardapp.models.history.HistoryTransactionModelElement
+import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
 
 class HomeHistoryAdapter : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding : ItemRecentActivityBinding) : RecyclerView.ViewHolder(binding.root)

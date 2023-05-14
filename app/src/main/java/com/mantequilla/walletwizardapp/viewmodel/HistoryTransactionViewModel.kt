@@ -5,7 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mantequilla.walletwizardapp.models.history.HistoryTransactionModel
+import com.mantequilla.walletwizardapp.helper.Constants
+import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
 import com.mantequilla.walletwizardapp.repository.HistoryTransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,20 +16,35 @@ import javax.inject.Inject
 class HistoryTransactionViewModel @Inject constructor(
     private val repository: HistoryTransactionRepository
 ) : ViewModel() {
-    private val _response = MutableLiveData<HistoryTransactionModel>()
-    val responseHistoryTransaction: LiveData<HistoryTransactionModel>
+    private val _response = MutableLiveData<List<HistoryTransactionModelElement>>()
+    val responseHistoryTransaction: LiveData<List<HistoryTransactionModelElement>>
         get() = _response
-
     init {
-        getHistoryTransaction()
+        getHistoryTransaction(
+            "Bearer ${Constants.API_KEY}",
+            "*",
+             Constants.API_KEY,
+            "eq.44721301-fa8d-412d-b62e-9b8d47d33dcb"
+        )
     }
 
-    private fun getHistoryTransaction() = viewModelScope.launch {
-        repository.getHistoryTransaction().let { response ->
+    private fun getHistoryTransaction(
+        authHeader: String,
+        fields : String,
+        apikey: String,
+        userId: String
+    ) = viewModelScope.launch {
+        repository.getHistoryTransaction(
+            authHeader,
+            fields,
+            apikey,
+            userId
+        ).let { response ->
             if (response.isSuccessful) {
                 _response.postValue(response.body())
+                Log.d("Success!", "Data ${response.body()}")
             } else {
-                Log.d("Error Get History Transaction!", "There's an error in ${response.code()}")
+                Log.d("Error Get History Transaction!", "There's an error in ${response.raw()}")
             }
         }
     }
