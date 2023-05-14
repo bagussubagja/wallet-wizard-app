@@ -23,14 +23,11 @@ import javax.inject.Inject
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HistoryTransactionViewModel by viewModels()
-    private lateinit var historyAdapter: HomeHistoryAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        setUpRecyclerView()
         binding.fabToAddTransactionActivity.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addTransactionActivity)
         }
@@ -40,20 +37,23 @@ class HomeFragment : Fragment() {
         binding.tvSeeMore.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_recentTransactionFragment)
         }
-
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+    }
 
-    private fun setUpRecyclerView() {
-        historyAdapter = HomeHistoryAdapter()
+    private fun setupRecyclerView() {
+        val recentActivityAdapterHome = HomeHistoryAdapter()
         binding.rvHistoryTransaction.apply {
-            adapter = historyAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
+            adapter = recentActivityAdapterHome
+            layoutManager = LinearLayoutManager(context)
         }
-        viewModel.responseHistoryTransaction.observe(viewLifecycleOwner) { it ->
-            historyAdapter.historyData = it
+
+        viewModel.responseHistoryTransaction.observe(viewLifecycleOwner) { historyData ->
+            recentActivityAdapterHome.historyData = historyData
         }
     }
 }

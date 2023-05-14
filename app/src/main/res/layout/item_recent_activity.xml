@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/ivTransactionIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dimen40dp"
+        android:layout_height="@dimen/dimen40dp"
         android:src="@drawable/ic_transaction"
         />
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="This is Activity Title"
-            android:textSize="@dimen/dimen18sp"
+            android:textSize="@dimen/dimen16sp"
             android:textStyle="bold"
             />
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="01/05/2023"
-            android:textSize="@dimen/dimen16sp"
+            android:textSize="@dimen/dimen14sp"
             />
     </LinearLayout>
 

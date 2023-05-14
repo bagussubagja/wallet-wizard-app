@@ -24,7 +24,7 @@ class HistoryTransactionViewModel @Inject constructor(
             "Bearer ${Constants.API_KEY}",
             "*",
              Constants.API_KEY,
-            "eq.44721301-fa8d-412d-b62e-9b8d47d33dcb"
+            "eq.a26ddfd8-077e-4e7f-abd7-c12d5b7a6088"
         )
     }
 

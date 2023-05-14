@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mantequilla.walletwizardapp.databinding.ItemRecentActivityBinding
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
+import com.mantequilla.walletwizardapp.utils.CommonFunction
 
 class HomeHistoryAdapter : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding : ItemRecentActivityBinding) : RecyclerView.ViewHolder(binding.root)
@@ -39,14 +40,15 @@ class HomeHistoryAdapter : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>
        return MyViewHolder(ItemRecentActivityBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount() = historyData.size
+    override fun getItemCount() : Int = minOf(historyData.size, 7)
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = historyData[position]
         holder.binding.apply {
             tvTransactionTitle.text = data.title
-            tvTransactionNominal.text = data.nominal.toString()
-            tvTransactionDate.text = data.date
+            tvTransactionNominal.text = CommonFunction.formatRupiah(data.nominal?.toLong() ?: 0)
+            tvTransactionDate.text = data.date?.substring(0,10)
+                ?.let { CommonFunction.convertDateFormat(it) }
         }
     }
 }
