@@ -16,8 +16,8 @@
         <action
             android:id="@+id/action_loginFragment_to_app_nav"
             app:destination="@id/app_nav"
-            app:popUpTo="@id/auth_nav"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/app_nav"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
