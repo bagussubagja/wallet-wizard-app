@@ -3,23 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigation">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.mantequilla.walletwizardapp.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_addTransactionActivity"
-            app:destination="@id/addTransactionActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_recentTransactionFragment"
-            app:destination="@id/recentTransactionFragment" />
-    </fragment>
     <fragment
         android:id="@+id/addTransactionActivity"
         android:name="com.mantequilla.walletwizardapp.fragments.AddTransactionFragment"
@@ -35,4 +20,18 @@
         android:name="com.mantequilla.walletwizardapp.fragments.RecentTransactionFragment"
         android:label="fragment_recent_transaction"
         tools:layout="@layout/fragment_recent_transaction" />
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/menuActivity2">
+        <activity
+            android:id="@+id/menuActivity2"
+            android:name="com.mantequilla.walletwizardapp.activities.MenuActivity"
+            android:label="activity_menu"
+            tools:layout="@layout/activity_menu" />
+        <action
+            android:id="@+id/action_global_recentTransactionFragment"
+            app:destination="@id/recentTransactionFragment" />
+        <action
+            android:id="@+id/action_global_addTransactionActivity"
+            app:destination="@id/addTransactionActivity" />
+    </navigation>
 </navigation>

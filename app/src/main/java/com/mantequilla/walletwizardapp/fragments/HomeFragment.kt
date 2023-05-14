@@ -19,15 +19,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.fabToAddTransactionActivity.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_addTransactionActivity)
-        }
-        binding.ivSettingButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
-        }
-        binding.tvSeeMore.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_recentTransactionFragment)
-        }
+//        binding.fabToAddTransactionActivity.setOnClickListener {
+//            findNavController().navigate(R.id.action_homeFragment_to_addTransactionActivity)
+//        }
+//        binding.ivSettingButton.setOnClickListener {
+//            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+//        }
+//        binding.tvSeeMore.setOnClickListener {
+//            findNavController().navigate(R.id.action_homeFragment_to_recentTransactionFragment)
+//        }
         return binding.root
     }
 }

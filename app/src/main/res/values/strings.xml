@@ -26,6 +26,8 @@
     <string name="recent_activity">Recent Activity</string>
     <string name="see_more">See More</string>
     <string name="fabutton">FAButton</string>
+    <string name="home_title_navbar">Home</string>
+    <string name="settings_title_navbar">Settings</string>
     <string-array name="transactionType">
         <item>Credit</item>
         <item>Debit</item>

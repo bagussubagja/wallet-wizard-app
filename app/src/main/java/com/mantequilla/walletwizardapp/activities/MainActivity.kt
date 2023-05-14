@@ -1,9 +1,10 @@
-package com.mantequilla.walletwizardapp
+package com.mantequilla.walletwizardapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.mantequilla.walletwizardapp.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController : NavController
