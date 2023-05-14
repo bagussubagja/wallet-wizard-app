@@ -16,13 +16,14 @@
         />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dimen0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen6dp"
         android:orientation="vertical"
         android:layout_weight="1"
         >
         <TextView
+            android:id="@+id/tvTransactionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="This is Activity Title"
@@ -30,6 +31,7 @@
             android:textStyle="bold"
             />
         <TextView
+            android:id="@+id/tvTransactionDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="01/05/2023"
@@ -38,6 +40,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvTransactionNominal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="+ Rp100.000"
