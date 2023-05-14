@@ -3,7 +3,7 @@ package com.mantequilla.walletwizardapp.repository
 import com.mantequilla.walletwizardapp.api.ApiService
 import javax.inject.Inject
 
-class HistoryTransactionRepository
+class ApiRepository
 @Inject
 constructor(private val apiService: ApiService)
 {
@@ -13,6 +13,18 @@ constructor(private val apiService: ApiService)
         apikey: String,
         userId: String
     ) = apiService.getHistoryTransaction(
+        authHeader = authHeader,
+        fields = fields,
+        apiKey = apikey,
+        userId = userId,
+    )
+
+    suspend fun getUserData(
+        authHeader: String,
+        fields : String,
+        apikey: String,
+        userId: String
+    ) = apiService.getUserData(
         authHeader = authHeader,
         fields = fields,
         apiKey = apikey,

@@ -8,7 +8,7 @@ data class HistoryTransactionModelElement (
     val is_credit: Boolean?,
     val nominal: Int?,
     val date: String?,
-    val currency: String?
+    val currency: String?,
 )
 
 
