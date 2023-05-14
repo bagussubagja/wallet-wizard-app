@@ -7,18 +7,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mantequilla.walletwizardapp.helper.Constants
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
-import com.mantequilla.walletwizardapp.repository.HistoryTransactionRepository
+import com.mantequilla.walletwizardapp.models.UserModel
+import com.mantequilla.walletwizardapp.repository.ApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryTransactionViewModel @Inject constructor(
-    private val repository: HistoryTransactionRepository
+class HomeFragmentViewModel @Inject constructor(
+    private val repository: ApiRepository
 ) : ViewModel() {
-    private val _response = MutableLiveData<List<HistoryTransactionModelElement>>()
+    private val _historyResponse = MutableLiveData<List<HistoryTransactionModelElement>>()
+    private val _userDataResponse = MutableLiveData<List<UserModel>>()
     val responseHistoryTransaction: LiveData<List<HistoryTransactionModelElement>>
-        get() = _response
+        get() = _historyResponse
+    val responseUserData: LiveData<List<UserModel>>
+        get() = _userDataResponse
     init {
         getHistoryTransaction(
             "Bearer ${Constants.API_KEY}",
@@ -26,6 +30,33 @@ class HistoryTransactionViewModel @Inject constructor(
              Constants.API_KEY,
             "eq.a26ddfd8-077e-4e7f-abd7-c12d5b7a6088"
         )
+        getUserData(
+            "Bearer ${Constants.API_KEY}",
+            "*",
+            Constants.API_KEY,
+            "eq.a26ddfd8-077e-4e7f-abd7-c12d5b7a6088"
+        )
+    }
+
+    private fun getUserData(
+        authHeader: String,
+        fields : String,
+        apikey: String,
+        userId: String
+    ) = viewModelScope.launch {
+        repository.getUserData(
+            authHeader,
+            fields,
+            apikey,
+            userId
+        ).let { response ->
+            if(response.isSuccessful) {
+                _userDataResponse.postValue(response.body())
+                Log.d("Success!", "Data ${response.body()}")
+            }else {
+                Log.d("Error Get User Data!", "There's an error in ${response.raw()}")
+            }
+        }
     }
 
     private fun getHistoryTransaction(
@@ -41,7 +72,7 @@ class HistoryTransactionViewModel @Inject constructor(
             userId
         ).let { response ->
             if (response.isSuccessful) {
-                _response.postValue(response.body())
+                _historyResponse.postValue(response.body())
                 Log.d("Success!", "Data ${response.body()}")
             } else {
                 Log.d("Error Get History Transaction!", "There's an error in ${response.raw()}")
