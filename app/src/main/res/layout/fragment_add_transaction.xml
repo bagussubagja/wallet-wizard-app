@@ -50,19 +50,20 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNominal"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/actv_dropdownTransactionTypeLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen8dp"
         android:layout_marginTop="@dimen/dimen16dp"
-        android:hint="@string/credit_debit_hint"
+        android:hint="@string/choose_transaction_type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -72,7 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:text="Credit/Debit" />
+            android:text="@string/credit_debit_hint_text"
+            tools:ignore="TransactionTypeLabel" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +88,7 @@
         android:text="User Currency"
         android:textSize="@dimen/dimen18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/actv_dropdownTransactionTypeLayout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -122,11 +124,12 @@
         tools:text="01/05/2023" />
 
     <Button
+        android:id="@+id/btnSubmitAddTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen24dp"
         android:layout_marginVertical="@dimen/dimen16dp"
-        android:text="Submit Data"
+        android:text="@string/submit_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

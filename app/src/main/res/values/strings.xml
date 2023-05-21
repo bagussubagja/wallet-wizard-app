@@ -26,6 +26,9 @@
     <string name="recent_activity">Recent Activity</string>
     <string name="see_more">See More</string>
     <string name="fabutton">FAButton</string>
+    <string name="submit_data">Submit Data</string>
+    <string name="credit_debit_hint_text">Credit/Debit</string>
+    <string name="choose_transaction_type">Choose Transaction Type</string>
     <string-array name="transactionType">
         <item>Credit</item>
         <item>Debit</item>

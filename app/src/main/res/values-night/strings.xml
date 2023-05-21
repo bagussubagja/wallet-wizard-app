@@ -6,4 +6,6 @@
     <string name="setting_button">Setting Button</string>
     <string name="user_dummy">User Dummy.</string>
     <string name="hello">Hello,</string>
+    <string name="credit_debit_hint_text">Credit/Debit</string>
+    <string name="choose_transaction_type">Choose Transaction Type</string>
 </resources>

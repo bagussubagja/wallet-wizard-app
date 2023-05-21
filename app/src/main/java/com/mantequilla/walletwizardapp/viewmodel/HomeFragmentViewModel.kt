@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.helper.Constants
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
 import com.mantequilla.walletwizardapp.models.UserModel
