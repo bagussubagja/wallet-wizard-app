@@ -39,4 +39,14 @@ constructor(private val apiService: ApiService)
         body = body,
         apikey = apikey
     )
+
+    suspend fun authenticationLogin(
+        body: JsonObject,
+        apikey: String,
+        grant_type: String
+    ) = apiService.authenticationLogin(
+        grant_type = grant_type,
+        apikey = apikey,
+        body = body
+    )
 }

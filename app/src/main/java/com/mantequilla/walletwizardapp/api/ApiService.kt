@@ -37,4 +37,12 @@ interface ApiService {
         @Body body : JsonObject,
         @Query("apikey") apikey: String = Constants.API_KEY
     ) : Response<Void>
+
+    @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
+    @POST(Constants.END_POINT_AUTH)
+    suspend fun authenticationLogin(
+        @Query("grant_type") grant_type: String,
+        @Query("apikey") apikey: String,
+        @Body body: JsonObject
+    ) : Response<JsonObject>
 }

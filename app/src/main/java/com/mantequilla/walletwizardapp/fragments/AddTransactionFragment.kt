@@ -54,7 +54,7 @@ class AddTransactionFragment : Fragment() {
             addProperty("user_id", "a26ddfd8-077e-4e7f-abd7-c12d5b7a6088")
             addProperty("title", titleText)
             addProperty("nominal", nominalText.toInt())
-            if (selectedTransactionType.uppercase() == "CREDIT") addProperty("is_credit", true) else addProperty("is_credit", false)
+            addProperty("is_credit", selectedTransactionType.uppercase() == "CREDIT")
             addProperty("currency", "Rupiah")
         }
         viewModel.addTransactionHistoryData(jsonBody)
