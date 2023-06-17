@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.helper.Constants
+import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
 import com.mantequilla.walletwizardapp.repository.ApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddTransactionViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
     fun addTransactionHistoryData(
-        body: JsonObject,
+        body: HistoryTransactionModelElement,
     ) = viewModelScope.launch {
         repository.addHistoryTransaction(
             body = body,

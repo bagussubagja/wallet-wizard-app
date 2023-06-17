@@ -3,6 +3,7 @@ package com.mantequilla.walletwizardapp.utils
 import android.util.Log
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 object CommonFunction {
@@ -12,11 +13,15 @@ object CommonFunction {
         val formattedValue = formatter.format(value)
         return rupiah + formattedValue
     }
-    fun formatDollar(value: Double): String {
+    fun formatDollar(value: Long): String {
         val dollar = "$"
         val formatter = java.text.DecimalFormat("#,###.00")
         val formattedValue = formatter.format(value)
         return dollar + formattedValue
+    }
+
+    fun getCurrentDate () : String {
+        return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
     }
 
     fun convertDateFormat(inputDate: String): String {

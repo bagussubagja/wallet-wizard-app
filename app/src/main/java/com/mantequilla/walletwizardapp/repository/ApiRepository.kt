@@ -2,6 +2,8 @@ package com.mantequilla.walletwizardapp.repository
 
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.api.ApiService
+import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
+import com.mantequilla.walletwizardapp.models.LoginBody
 import javax.inject.Inject
 
 class ApiRepository
@@ -33,7 +35,7 @@ constructor(private val apiService: ApiService)
     )
 
     suspend fun addHistoryTransaction(
-        body : JsonObject,
+        body : HistoryTransactionModelElement,
         apikey: String
     ) = apiService.addHistoryTransaction(
         body = body,
@@ -41,7 +43,7 @@ constructor(private val apiService: ApiService)
     )
 
     suspend fun authenticationLogin(
-        body: JsonObject,
+        body: LoginBody,
         apikey: String,
         grant_type: String
     ) = apiService.authenticationLogin(

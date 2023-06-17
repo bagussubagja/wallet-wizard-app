@@ -20,9 +20,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen8dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginStart="@dimen/dimen8dp"
         android:padding="@dimen/dimen12dp"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +30,10 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivUserAvatar"
-            android:src="@drawable/blank_avatar"
             android:layout_width="@dimen/dimen60dp"
             android:layout_height="@dimen/dimen60dp"
-            app:shapeAppearanceOverlay="@style/circleImageView"
-             />
+            android:src="@drawable/blank_avatar"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,10 +52,10 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/user_dummy"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="@string/user_dummy" />
         </LinearLayout>
 
     </LinearLayout>
@@ -65,13 +64,13 @@
         android:id="@+id/ivSettingButton"
         android:layout_width="@dimen/dimen30dp"
         android:layout_height="@dimen/dimen30dp"
+        android:layout_marginEnd="@dimen/dimen20dp"
+        android:contentDescription="@string/setting_button"
         android:src="@drawable/round_settings_24"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
-        android:layout_marginEnd="@dimen/dimen20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white"
-        android:contentDescription="@string/setting_button" />
+        app:tint="@color/white" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -81,10 +80,10 @@
         android:layout_marginTop="@dimen/dimen100dp"
         android:backgroundTint="@color/white"
         app:cardElevation="@dimen/dimen8dp"
-        app:strokeColor="@color/greyAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/greyAccent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -137,19 +136,18 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:baselineAligned="false"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:baselineAligned="false">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="100"
-                        >
+                        android:layout_weight="100">
 
                         <TextView
                             android:id="@+id/tvIncomeTitle"
@@ -167,12 +165,10 @@
                     </LinearLayout>
 
 
-
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        >
+                        android:layout_weight="1">
 
                         <TextView
                             android:id="@+id/tvOutcomeTitle"
@@ -183,10 +179,10 @@
 
                         <TextView
                             android:id="@+id/tvOutcomeData"
-                            android:layout_marginEnd="@dimen/dimen8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen4dp"
+                            android:layout_marginEnd="@dimen/dimen8dp"
                             tools:text="Rp.100000" />
                     </LinearLayout>
 
@@ -197,7 +193,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -206,11 +201,11 @@
         android:id="@+id/tvRecentActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recent_activity"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/dimen16dp"
         android:layout_marginStart="@dimen/dimen16dp"
+        android:layout_marginTop="@dimen/dimen16dp"
+        android:text="@string/recent_activity"
         android:textSize="@dimen/dimen20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
@@ -225,28 +220,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRecentActivityTitle" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHistoryTransaction"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/multiStateView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen16dp"
+        android:layout_marginTop="@dimen/dimen10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRecentActivityTitle"
-        tools:listitem="@layout/item_recent_activity"
-        tools:itemCount="8"
-        />
+        app:msv_emptyView="@layout/empty_recent_activity_view"
+        app:msv_errorView="@layout/empty_recent_activity_view"
+        app:msv_loadingView="@layout/loading_state_view"
+        app:msv_viewState="loading">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHistoryTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen16dp"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_recent_activity" />
+    </com.kennyc.view.MultiStateView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabToAddTransactionActivity"
-        android:backgroundTint="@color/greenPrimary"
-        app:tint="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen16dp"
+        android:backgroundTint="@color/greenPrimary"
+        android:contentDescription="@string/fabutton"
         android:src="@drawable/round_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/fabutton" />
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

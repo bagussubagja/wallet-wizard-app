@@ -1,16 +1,18 @@
 package com.mantequilla.walletwizardapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mantequilla.walletwizardapp.databinding.ItemRecentActivityBinding
+import com.mantequilla.walletwizardapp.helper.Constants
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
+import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
+import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
 import com.mantequilla.walletwizardapp.utils.CommonFunction
 
-class HomeHistoryAdapter : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>() {
+class HomeHistoryAdapter(private val sharedPref: PreferenceHelper) : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding : ItemRecentActivityBinding) : RecyclerView.ViewHolder(binding.root)
     private val diffcallback = object : DiffUtil.ItemCallback<HistoryTransactionModelElement>() {
         override fun areItemsTheSame(
@@ -46,7 +48,12 @@ class HomeHistoryAdapter : RecyclerView.Adapter<HomeHistoryAdapter.MyViewHolder>
         val data = historyData[position]
         holder.binding.apply {
             tvTransactionTitle.text = data.title
-            tvTransactionNominal.text = CommonFunction.formatRupiah(data.nominal?.toLong() ?: 0)
+            val formattedNominal = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
+                Constants.RUPIAH -> CommonFunction.formatRupiah(data.nominal?.toLong() ?: 0)
+                Constants.DOLLAR ->CommonFunction.formatDollar(data.nominal?.toLong() ?: 0)
+                else -> "0"
+            }
+            tvTransactionNominal.text = formattedNominal
             tvTransactionDate.text = data.date?.substring(0,10)
                 ?.let { CommonFunction.convertDateFormat(it) }
         }

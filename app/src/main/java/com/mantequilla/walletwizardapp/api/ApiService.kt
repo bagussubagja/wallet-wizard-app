@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.helper.Constants
 
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
+import com.mantequilla.walletwizardapp.models.LoginBody
 import com.mantequilla.walletwizardapp.models.UserModel
 import retrofit2.Call
 import retrofit2.Response
@@ -34,7 +35,7 @@ interface ApiService {
     @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
     @POST(Constants.END_POINT_HISTORY_TRANSACTION)
     suspend fun addHistoryTransaction(
-        @Body body : JsonObject,
+        @Body body : HistoryTransactionModelElement,
         @Query("apikey") apikey: String = Constants.API_KEY
     ) : Response<Void>
 
@@ -43,6 +44,6 @@ interface ApiService {
     suspend fun authenticationLogin(
         @Query("grant_type") grant_type: String,
         @Query("apikey") apikey: String,
-        @Body body: JsonObject
+        @Body body: LoginBody
     ) : Response<JsonObject>
 }

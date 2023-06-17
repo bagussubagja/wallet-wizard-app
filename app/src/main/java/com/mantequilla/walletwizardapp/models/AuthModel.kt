@@ -46,3 +46,8 @@ data class IdentityData (
 
 class UserMetadata()
 
+data class LoginBody(
+    val email: String,
+    val password: String
+)
+

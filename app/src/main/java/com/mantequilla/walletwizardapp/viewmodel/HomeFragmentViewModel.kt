@@ -10,13 +10,16 @@ import com.mantequilla.walletwizardapp.helper.Constants
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
 import com.mantequilla.walletwizardapp.models.UserModel
 import com.mantequilla.walletwizardapp.repository.ApiRepository
+import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
+import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val repository: ApiRepository
+    private val repository: ApiRepository,
+    private val sharedPref: PreferenceHelper
 ) : ViewModel() {
     private val _historyResponse = MutableLiveData<List<HistoryTransactionModelElement>>()
     private val _userDataResponse = MutableLiveData<List<UserModel>>()
@@ -29,13 +32,13 @@ class HomeFragmentViewModel @Inject constructor(
             "Bearer ${Constants.API_KEY}",
             "*",
              Constants.API_KEY,
-            "eq.a26ddfd8-077e-4e7f-abd7-c12d5b7a6088"
+            "eq.${sharedPref.getString(AuthObject.PREF_ID)}"
         )
         getUserData(
             "Bearer ${Constants.API_KEY}",
             "*",
             Constants.API_KEY,
-            "eq.a26ddfd8-077e-4e7f-abd7-c12d5b7a6088"
+            "eq.${sharedPref.getString(AuthObject.PREF_ID)}"
         )
     }
 
@@ -53,7 +56,11 @@ class HomeFragmentViewModel @Inject constructor(
         ).let { response ->
             if(response.isSuccessful) {
                 _userDataResponse.postValue(response.body())
-                Log.d("Success!", "Data ${response.body()}")
+                response.body()?.get(0)?.currency?.let {value ->
+                    sharedPref.put(AuthObject.PREF_USER_CURRENCY,
+                        value
+                    )
+                }
             }else {
                 Log.d("Error Get User Data!", "There's an error in ${response.raw()}")
             }
@@ -74,7 +81,7 @@ class HomeFragmentViewModel @Inject constructor(
         ).let { response ->
             if (response.isSuccessful) {
                 _historyResponse.postValue(response.body())
-                Log.d("Success!", "Data ${response.body()}")
+                Log.d("Success!!!", "Data ${response.headers()}")
             } else {
                 Log.d("Error Get History Transaction!", "There's an error in ${response.raw()}")
             }
