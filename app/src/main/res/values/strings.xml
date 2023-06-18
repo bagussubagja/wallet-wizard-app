@@ -31,6 +31,10 @@
     <string name="choose_transaction_type">Choose Transaction Type</string>
     <string name="no_recent_activity_found">No Recent Activity Found!</string>
     <string name="error_occured_when_load_data">Error Occured when load data! :(</string>
+    <string name="update_profile_user">Update Profile User</string>
+    <string name="right_arrow_icon">Right Arrow Icon</string>
+    <string name="top_up_balance">Top Up Balance</string>
+    <string name="log_out">Log Out</string>
     <string-array name="transactionType">
         <item>Credit</item>
         <item>Debit</item>

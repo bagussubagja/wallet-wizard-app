@@ -13,10 +13,13 @@ import com.kennyc.view.MultiStateView
 import com.mantequilla.walletwizardapp.R
 import com.mantequilla.walletwizardapp.adapter.HomeHistoryAdapter
 import com.mantequilla.walletwizardapp.databinding.FragmentHomeBinding
+import com.mantequilla.walletwizardapp.helper.Constants
+import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
 import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
 import com.mantequilla.walletwizardapp.utils.CommonFunction
 import com.mantequilla.walletwizardapp.viewmodel.HomeFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.annotation.meta.When
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -24,13 +27,14 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeFragmentViewModel by viewModels()
     private lateinit var multiStateView: MultiStateView
     private lateinit var sharedPref: PreferenceHelper
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        assignUserData()
         sharedPref = PreferenceHelper(requireContext())
+        assignUserData()
         setupRecyclerView()
         multiStateView = binding.multiStateView
         binding.fabToAddTransactionActivity.setOnClickListener {
@@ -50,10 +54,21 @@ class HomeFragment : Fragment() {
             if (!userData.isNullOrEmpty()) {
                 val user = userData[0]
                 binding.tvUserName.text = user.name
-                binding.tvCurrentBalanceData.text = CommonFunction.formatRupiah(user.balance!!)
-                binding.tvOutcomeData.text = CommonFunction.formatRupiah(user.money_spent!!)
-                binding.tvIncomeData.text = CommonFunction.formatRupiah(user.income!!)
-
+                binding.tvCurrentBalanceData.text = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
+                    Constants.RUPIAH -> CommonFunction.formatRupiah(user.balance!!)
+                    Constants.DOLLAR -> CommonFunction.formatDollar(user.balance!!)
+                    else -> "0"
+                }
+                binding.tvOutcomeData.text = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
+                    Constants.RUPIAH -> CommonFunction.formatRupiah(user.money_spent!!)
+                    Constants.DOLLAR -> CommonFunction.formatDollar(user.money_spent!!)
+                    else -> "0"
+                }
+                binding.tvIncomeData.text = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
+                    Constants.RUPIAH -> CommonFunction.formatRupiah(user.income!!)
+                    Constants.DOLLAR -> CommonFunction.formatDollar(user.income!!)
+                    else -> "0"
+                }
             }
         }
     }
@@ -72,7 +87,6 @@ class HomeFragment : Fragment() {
                 multiStateView.viewState = MultiStateView.ViewState.CONTENT
                 recentActivityAdapterHome.historyData = historyData
             }
-            Log.d("History Data", historyData.toString())
         }
     }
 }

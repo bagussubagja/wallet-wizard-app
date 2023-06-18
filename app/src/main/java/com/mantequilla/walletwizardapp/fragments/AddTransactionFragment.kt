@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mantequilla.walletwizardapp.R
 import com.mantequilla.walletwizardapp.databinding.FragmentAddTransactionBinding
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
@@ -72,6 +73,14 @@ class AddTransactionFragment : Fragment() {
             currency = sharedPref.getString(AuthObject.PREF_USER_CURRENCY),
             date = null
         )
-        viewModel.addTransactionHistoryData(body)
+        viewModel.addTransactionHistoryData(body, ::onAddTransactionSuccess, ::onAddTransactionFailed)
     }
+
+    private fun onAddTransactionSuccess() {
+        binding.etTitle.text?.clear()
+        binding.etNominal.text?.clear()
+        Snackify.success(requireView(), "Transaction Success!", Snackify.LENGTH_LONG).show()
+        findNavController().navigate(R.id.homeFragment)
+    }
+    private fun onAddTransactionFailed(e: Throwable) {}
 }

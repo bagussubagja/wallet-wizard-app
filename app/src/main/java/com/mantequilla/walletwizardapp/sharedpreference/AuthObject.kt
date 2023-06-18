@@ -2,6 +2,7 @@ package com.mantequilla.walletwizardapp.sharedpreference
 
 class AuthObject {
     companion object{
+        val PREF_NAME = "PREF_NAME"
         val PREF_IS_LOGIN = "PREF_IS_LOGIN"
         val PREF_ID = "PREF_ID"
         val PREF_EMAIL = "PREF_EMAIL"

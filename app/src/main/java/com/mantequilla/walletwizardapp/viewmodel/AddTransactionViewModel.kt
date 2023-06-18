@@ -15,6 +15,8 @@ import javax.inject.Inject
 class AddTransactionViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
     fun addTransactionHistoryData(
         body: HistoryTransactionModelElement,
+        onAddTransactionSuccess: () -> Unit,
+        onAddTransactionFailed: (Throwable) -> Unit,
     ) = viewModelScope.launch {
         repository.addHistoryTransaction(
             body = body,
@@ -22,8 +24,10 @@ class AddTransactionViewModel @Inject constructor(private val repository: ApiRep
         ).let { response ->
             if(response.isSuccessful) {
                 Log.d("Add Transaction History Success!", "${response.raw()}")
+                onAddTransactionSuccess()
             } else {
                 Log.d("Add Transaction History Failed", "${response.raw()}")
+                onAddTransactionFailed(Throwable("Transaction Failed"))
             }
         }
     }

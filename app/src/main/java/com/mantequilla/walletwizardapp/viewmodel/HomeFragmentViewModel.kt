@@ -56,10 +56,10 @@ class HomeFragmentViewModel @Inject constructor(
         ).let { response ->
             if(response.isSuccessful) {
                 _userDataResponse.postValue(response.body())
-                response.body()?.get(0)?.currency?.let {value ->
-                    sharedPref.put(AuthObject.PREF_USER_CURRENCY,
-                        value
-                    )
+                response.body()?.get(0)?.let { value ->
+                    sharedPref.put(AuthObject.PREF_USER_CURRENCY, value.currency!!)
+                    sharedPref.put(AuthObject.PREF_EMAIL, value.email!!)
+                    sharedPref.put(AuthObject.PREF_NAME, value.name!!)
                 }
             }else {
                 Log.d("Error Get User Data!", "There's an error in ${response.raw()}")
@@ -81,7 +81,7 @@ class HomeFragmentViewModel @Inject constructor(
         ).let { response ->
             if (response.isSuccessful) {
                 _historyResponse.postValue(response.body())
-                Log.d("Success!!!", "Data ${response.headers()}")
+                Log.d("Success!!!", "Data ${response.body()}")
             } else {
                 Log.d("Error Get History Transaction!", "There's an error in ${response.raw()}")
             }

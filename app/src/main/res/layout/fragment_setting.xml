@@ -18,5 +18,112 @@
         app:title="Setting"
         app:titleTextColor="@color/white" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivUserAvatarSetting"
+        android:layout_width="@dimen/dimen100dp"
+        android:layout_height="@dimen/dimen100dp"
+        android:src="@drawable/blank_avatar"
+        android:layout_marginTop="@dimen/dimen48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbarSetting"
+        app:shapeAppearanceOverlay="@style/circleImageView" />
+
+    <TextView
+        android:id="@+id/tvUserFullNameSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen12dp"
+        android:textSize="@dimen/dimen22sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivUserAvatarSetting"
+        app:layout_constraintStart_toStartOf="@+id/ivUserAvatarSetting"
+        app:layout_constraintTop_toBottomOf="@+id/ivUserAvatarSetting"
+        tools:text="Full Name" />
+
+    <TextView
+        android:id="@+id/tvUserEmailSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen8dp"
+        android:textSize="@dimen/dimen18sp"
+        android:textColor="@color/greyAccent"
+        app:layout_constraintEnd_toEndOf="@+id/tvUserFullNameSetting"
+        app:layout_constraintStart_toStartOf="@+id/tvUserFullNameSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserFullNameSetting"
+        tools:text="useremail@email.com" />
+
+    <LinearLayout
+        android:id="@+id/llMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserEmailSetting">
+
+        <LinearLayout
+            android:id="@+id/updateUserMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dimen12dp"
+            android:padding="@dimen/dimen16dp"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <TextView
+                android:layout_width="@dimen/dimen0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/update_profile_user" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/right_arrow_icon"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/topUpBalanceMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dimen12dp"
+            android:padding="@dimen/dimen16dp"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <TextView
+                android:layout_width="@dimen/dimen0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/top_up_balance" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/right_arrow_icon"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/logoutMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dimen12dp"
+            android:padding="@dimen/dimen16dp"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <TextView
+                android:layout_width="@dimen/dimen0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/log_out" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/right_arrow_icon"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
