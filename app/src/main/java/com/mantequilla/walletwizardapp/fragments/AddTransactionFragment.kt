@@ -61,6 +61,7 @@ class AddTransactionFragment : Fragment() {
             } else {
                 addTransactionHistoryBody()
                 updateBalance()
+                updateIncomeOutcome()
             }
 
         }
@@ -116,5 +117,27 @@ class AddTransactionFragment : Fragment() {
 
     private fun onUpdateBalanceFailed(e: Throwable) {
         Log.d("Failed Update Balance", e.toString())
+    }
+
+    private fun updateIncomeOutcome() {
+        val selectedTransactionType = binding.actvDropdownTransactionType.text.toString()
+        val nominalText = binding.etNominal.text.toString()
+        val nominal = nominalText.toInt()
+        val nominalBody = JsonObject().apply {
+           if (selectedTransactionType.uppercase() == "CREDIT") {
+               addProperty("income", nominal)
+           } else {
+               addProperty("money_spent", nominal)
+           }
+        }
+        viewModel.updateIncomeOutcome(nominal = nominalBody, ::onUpdateSuccess, ::onUpdateFailed)
+    }
+
+    private fun onUpdateSuccess() {
+        Log.d("Success Update IncomeOutcome", "Success Update IncomeOutcome")
+    }
+
+    private fun onUpdateFailed(e: Throwable) {
+        Log.d("Failed Update IncomeOutcome", e.toString())
     }
 }

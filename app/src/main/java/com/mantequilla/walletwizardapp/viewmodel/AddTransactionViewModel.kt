@@ -57,4 +57,25 @@ class AddTransactionViewModel @Inject constructor(
             }
         }
     }
+
+    fun updateIncomeOutcome(
+        nominal: JsonObject,
+        onUpdateSuccess: () -> Unit,
+        onUpdateFailed: (Throwable) -> Unit
+    ) = viewModelScope.launch {
+        repository.updateIncomeOutcome(
+            nominal = nominal,
+            apiKey = Constants.API_KEY,
+            userId = "eq.${sharedPref.getString(AuthObject.PREF_ID)}"
+        ).let { response ->
+            if(response.isSuccessful) {
+                Log.d("Response Success Update Income Outcome", "${response.code()}")
+                onUpdateSuccess()
+            } else {
+                Log.d("Response Failed Income Outcome", "${response.code()}")
+                Log.d("Response Failed Income Outcome", "${response.raw()}")
+                onUpdateFailed(Throwable("Update Balance Error"))
+            }
+        }
+    }
 }

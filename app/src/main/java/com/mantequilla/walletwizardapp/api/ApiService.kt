@@ -55,4 +55,12 @@ interface ApiService {
         @Query("apikey") apiKey: String,
         @Body balance: JsonObject
     ) : Response<Void>
+
+    @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
+    @PATCH(Constants.END_POINT_USER)
+    suspend fun updateIncomeOutcome(
+        @Query("user_id") userId: String,
+        @Query("apikey") apiKey: String,
+        @Body nominal: JsonObject
+    ) : Response<Void>
 }

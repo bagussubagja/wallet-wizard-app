@@ -61,4 +61,12 @@ constructor(private val apiService: ApiService)
         apiKey = apiKey,
         balance = balance
     )
+
+    suspend fun updateIncomeOutcome(
+        userId: String,
+        apiKey: String,
+        nominal: JsonObject
+    ) = apiService.updateIncomeOutcome(
+        userId, apiKey, nominal
+    )
 }
