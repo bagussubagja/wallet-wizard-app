@@ -34,6 +34,4 @@ class RecentTransactionFragment : Fragment() {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
     }
-
-
 }

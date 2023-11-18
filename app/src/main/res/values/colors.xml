@@ -5,4 +5,5 @@
     <color name="greenPrimary">#FF2FBF71</color>
     <color name="greenDarker">#FF2B935B</color>
     <color name="greyAccent">#FFAFAFAF</color>
+    <color name="redAccent">#FFDC143C</color>
 </resources>

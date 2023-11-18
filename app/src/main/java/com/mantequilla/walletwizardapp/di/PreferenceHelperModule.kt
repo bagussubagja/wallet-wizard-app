@@ -11,7 +11,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object PreferenceHelperModule {
-
     @Provides
     fun providePreferenceHelper(@ApplicationContext context: Context) : PreferenceHelper{
         return PreferenceHelper(context)

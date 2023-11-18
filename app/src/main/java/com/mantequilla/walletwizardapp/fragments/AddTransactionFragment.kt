@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.R
 import com.mantequilla.walletwizardapp.databinding.FragmentAddTransactionBinding
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
@@ -54,6 +55,7 @@ class AddTransactionFragment : Fragment() {
                 Snackify.warning(requireView(), "The Fields cant be empty!", Snackify.LENGTH_LONG).show()
             } else {
                 addTransactionHistoryBody()
+                updateBalance()
             }
 
         }
@@ -83,4 +85,21 @@ class AddTransactionFragment : Fragment() {
         findNavController().navigate(R.id.homeFragment)
     }
     private fun onAddTransactionFailed(e: Throwable) {}
+
+    private fun updateBalance() {
+        val nominalText = binding.etNominal.text.toString()
+        val nominal = nominalText.toInt()
+        val totalNominal = sharedPref.getInt(AuthObject.PREF_USER_BALANCE) - nominal
+        val nominalBody = JsonObject().apply {
+            addProperty("balance", totalNominal)
+        }
+        viewModel.updateBalanceData(nominalBody, ::onUpdateBalanceSuccess, ::onUpdateBalanceFailed)
+    }
+
+    private fun onUpdateBalanceSuccess() {
+        Log.d("Success Update Balance", "Success Update Balance")
+    }
+    private fun onUpdateBalanceFailed(e: Throwable) {
+        Log.d("Failed Update Balance", e.toString())
+    }
 }

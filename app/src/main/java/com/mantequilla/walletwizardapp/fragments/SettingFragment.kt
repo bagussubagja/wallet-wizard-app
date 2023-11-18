@@ -40,6 +40,7 @@ class SettingFragment : Fragment() {
         binding.logoutMenu.setOnClickListener {
             doLogoutAction()
         }
+        binding.topUpBalanceMenu.setOnClickListener {  }
     }
 
     private fun doLogoutAction() {

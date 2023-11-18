@@ -51,4 +51,14 @@ constructor(private val apiService: ApiService)
         apikey = apikey,
         body = body
     )
+
+    suspend fun updateBalance(
+        userId: String,
+        apiKey: String,
+        balance: JsonObject
+    ) = apiService.updateBalance(
+        userId = userId,
+        apiKey = apiKey,
+        balance = balance
+    )
 }

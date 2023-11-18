@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController : NavController
-    private lateinit var sharedPref: PreferenceHelper
+private lateinit var sharedPref: PreferenceHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

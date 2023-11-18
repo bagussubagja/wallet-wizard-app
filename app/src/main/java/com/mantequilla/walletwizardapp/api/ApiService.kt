@@ -12,6 +12,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -46,4 +47,12 @@ interface ApiService {
         @Query("apikey") apikey: String,
         @Body body: LoginBody
     ) : Response<JsonObject>
+
+    @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
+    @PATCH(Constants.END_POINT_USER)
+    suspend fun updateBalance(
+        @Query("user_id") userId: String,
+        @Query("apikey") apiKey: String,
+        @Body balance: JsonObject
+    ) : Response<Void>
 }
