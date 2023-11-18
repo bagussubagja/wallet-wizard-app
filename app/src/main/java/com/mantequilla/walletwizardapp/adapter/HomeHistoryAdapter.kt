@@ -56,7 +56,7 @@ class HomeHistoryAdapter(private val sharedPref: PreferenceHelper) : RecyclerVie
                 else -> "0"
             }
             tvTransactionNominal.text = formattedNominal
-            tvTransactionNominal.setTextColor( if(data.is_credit!!) Color.GREEN else Color.RED)
+            tvTransactionNominal.setTextColor( if(data.is_credit!!) Color.BLACK else Color.RED)
             tvTransactionDate.text = data.date?.substring(0,10)
                 ?.let { CommonFunction.convertDateFormat(it) }
         }

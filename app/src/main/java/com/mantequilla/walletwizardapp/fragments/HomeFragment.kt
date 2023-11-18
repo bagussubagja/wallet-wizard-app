@@ -54,9 +54,10 @@ class HomeFragment : Fragment() {
             if (!userData.isNullOrEmpty()) {
                 val user = userData[0]
                 binding.tvUserName.text = user.name
+                sharedPref.put(AuthObject.PREF_USER_BALANCE, user.balance!!.toInt())
                 binding.tvCurrentBalanceData.text = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
-                    Constants.RUPIAH -> CommonFunction.formatRupiah(user.balance!!)
-                    Constants.DOLLAR -> CommonFunction.formatDollar(user.balance!!)
+                    Constants.RUPIAH -> CommonFunction.formatRupiah(user.balance)
+                    Constants.DOLLAR -> CommonFunction.formatDollar(user.balance)
                     else -> "0"
                 }
                 binding.tvOutcomeData.text = when (sharedPref.getString(AuthObject.PREF_USER_CURRENCY)) {
