@@ -37,6 +37,18 @@
             app:popUpTo="@id/auth_nav"
             app:popUpToInclusive="true"
             app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_registerFragment_to_biodataFragment"
+            app:destination="@id/biodataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataFragment"
+        android:name="com.mantequilla.walletwizardapp.fragments.BiodataFragment"
+        android:label="biodata_fragment"
+        tools:layout="@layout/fragment_biodata" >
+        <action
+            android:id="@+id/action_biodataFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <include app:graph="@navigation/app_nav" />
 </navigation>

@@ -35,8 +35,17 @@
     <string name="right_arrow_icon">Right Arrow Icon</string>
     <string name="top_up_balance">Top Up Balance</string>
     <string name="log_out">Log Out</string>
+    <string name="biodata_screen_title">Biodata Screen</string>
+    <string name="enter_your_name_biodata">Enter your name...</string>
+    <string name="choose_your_currency_biodata">Choose Your Currency</string>
+    <string name="rupiah_dolar_biodata">Rupiah/Dolar</string>
+    <string name="enter_your_initial_balance">Enter your initial balance...</string>
     <string-array name="transactionType">
         <item>Credit</item>
         <item>Debit</item>
+    </string-array>
+    <string-array name="currencyType">
+        <item>Rupiah</item>
+        <item>Dolar</item>
     </string-array>
 </resources>

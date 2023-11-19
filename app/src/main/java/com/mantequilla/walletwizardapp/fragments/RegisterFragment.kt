@@ -26,7 +26,7 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
         binding.btnRegisterAction.setOnClickListener {
-            // TODO : Add Biodata Screen
+            findNavController().navigate(R.id.action_registerFragment_to_biodataFragment)
         }
         return binding.root
     }

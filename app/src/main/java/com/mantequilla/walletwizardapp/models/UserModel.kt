@@ -6,7 +6,6 @@ data class UserModel(
     val email : String?,
     val name : String?,
     val currency : String?,
-    val gender : String?,
     val balance : Long?,
     val money_spent : Long?,
     val income: Long?,
