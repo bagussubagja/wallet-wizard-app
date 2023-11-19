@@ -2,8 +2,9 @@ package com.mantequilla.walletwizardapp.repository
 
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.api.ApiService
+import com.mantequilla.walletwizardapp.models.AuthBody
+import com.mantequilla.walletwizardapp.models.BiodataUserModel
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
-import com.mantequilla.walletwizardapp.models.LoginBody
 import javax.inject.Inject
 
 class ApiRepository
@@ -43,7 +44,7 @@ constructor(private val apiService: ApiService)
     )
 
     suspend fun authenticationLogin(
-        body: LoginBody,
+        body: AuthBody,
         apikey: String,
         grant_type: String
     ) = apiService.authenticationLogin(
@@ -69,4 +70,13 @@ constructor(private val apiService: ApiService)
     ) = apiService.updateIncomeOutcome(
         userId, apiKey, nominal
     )
+
+    suspend fun authenticationRegister(
+        body: AuthBody,
+        apiKey: String
+    ) = apiService.authenticationRegister(body, apiKey)
+
+    suspend fun postBiodataUser(
+        body: BiodataUserModel
+    ) = apiService.postBiodataUser(body)
 }

@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_homeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_recentTransactionFragment"
-            app:destination="@id/recentTransactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTransactionActivity"
@@ -32,21 +29,8 @@
         tools:layout="@layout/fragment_setting" >
         <action
             android:id="@+id/action_settingFragment_to_logout_nav"
-            app:destination="@id/auth_nav"
-            app:popUpTo="@id/auth_nav"
             app:popUpToInclusive="true"
-            app:launchSingleTop="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            />
+            app:destination="@id/logout_nav" />
     </fragment>
-    <fragment
-        android:id="@+id/recentTransactionFragment"
-        android:name="com.mantequilla.walletwizardapp.fragments.RecentTransactionFragment"
-        android:label="fragment_recent_transaction"
-        tools:layout="@layout/fragment_recent_transaction"
-        />
     <include app:graph="@navigation/logout_nav" />
 </navigation>

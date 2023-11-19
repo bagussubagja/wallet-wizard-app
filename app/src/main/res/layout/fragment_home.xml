@@ -209,17 +209,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
-    <TextView
-        android:id="@+id/tvSeeMore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dimen16dp"
-        android:text="@string/see_more"
-        android:textSize="@dimen/dimen18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvRecentActivityTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvRecentActivityTitle" />
-
     <com.kennyc.view.MultiStateView
         android:id="@+id/multiStateView"
         android:layout_width="match_parent"

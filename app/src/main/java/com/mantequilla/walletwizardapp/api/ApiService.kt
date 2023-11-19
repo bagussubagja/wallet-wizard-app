@@ -2,9 +2,10 @@ package com.mantequilla.walletwizardapp.api
 
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.helper.Constants
+import com.mantequilla.walletwizardapp.models.AuthBody
+import com.mantequilla.walletwizardapp.models.BiodataUserModel
 
 import com.mantequilla.walletwizardapp.models.HistoryTransactionModelElement
-import com.mantequilla.walletwizardapp.models.LoginBody
 import com.mantequilla.walletwizardapp.models.UserModel
 import retrofit2.Call
 import retrofit2.Response
@@ -45,7 +46,7 @@ interface ApiService {
     suspend fun authenticationLogin(
         @Query("grant_type") grant_type: String,
         @Query("apikey") apikey: String,
-        @Body body: LoginBody
+        @Body body: AuthBody
     ) : Response<JsonObject>
 
     @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
@@ -63,4 +64,17 @@ interface ApiService {
         @Query("apikey") apiKey: String,
         @Body nominal: JsonObject
     ) : Response<Void>
+
+    @Headers("${Constants.AUTHORIZATION}:Bearer ${Constants.API_KEY}")
+    @POST(Constants.END_POINT_SIGNUP)
+    suspend fun authenticationRegister(
+        @Body body: AuthBody,
+        @Query("apikey") apiKey: String,
+    ): Response<JsonObject>
+
+    @Headers("apikey:${Constants.API_KEY}")
+    @POST(Constants.END_POINT_USER)
+    suspend fun postBiodataUser(
+        @Body body: BiodataUserModel,
+    ): Response<Void>
 }

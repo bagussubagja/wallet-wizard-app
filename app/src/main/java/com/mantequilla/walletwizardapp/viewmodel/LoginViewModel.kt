@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.helper.Constants
-import com.mantequilla.walletwizardapp.models.LoginBody
+import com.mantequilla.walletwizardapp.models.AuthBody
 import com.mantequilla.walletwizardapp.repository.ApiRepository
 import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
 import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
@@ -20,7 +20,7 @@ class LoginViewModel @Inject constructor(
     private val sharedPref: PreferenceHelper
     ) : ViewModel() {
     fun loginAction (
-        body: LoginBody,
+        body: AuthBody,
         onLoginSuccess: () -> Unit,
         onLoginFailed: (Throwable) -> Unit,
     ) = viewModelScope.launch {

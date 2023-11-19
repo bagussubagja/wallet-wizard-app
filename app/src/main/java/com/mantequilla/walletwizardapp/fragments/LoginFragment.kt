@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.gson.JsonObject
 import com.mantequilla.walletwizardapp.R
 import com.mantequilla.walletwizardapp.databinding.FragmentLoginBinding
-import com.mantequilla.walletwizardapp.models.LoginBody
+import com.mantequilla.walletwizardapp.models.AuthBody
 import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
 import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
 import com.mantequilla.walletwizardapp.viewmodel.LoginViewModel
@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun loginBody(email: String, password: String) {
-        val loginBody = LoginBody(
+        val loginBody = AuthBody(
             email = email,
             password = password
         )

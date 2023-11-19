@@ -7,6 +7,7 @@ object Constants {
     const val END_POINT_HISTORY_TRANSACTION = "/rest/v1/history_transaction"
     const val END_POINT_USER = "/rest/v1/users"
     const val END_POINT_AUTH = "/auth/v1/token"
+    const val END_POINT_SIGNUP = "/auth/v1/signup"
 
     const val DOLLAR = "dollar"
     const val RUPIAH = "rupiah"

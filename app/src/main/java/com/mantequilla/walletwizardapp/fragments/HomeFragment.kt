@@ -43,9 +43,6 @@ class HomeFragment : Fragment() {
         binding.ivSettingButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
         }
-        binding.tvSeeMore.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_recentTransactionFragment)
-        }
         return binding.root
     }
 

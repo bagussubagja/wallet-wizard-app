@@ -1,6 +1,7 @@
 package com.mantequilla.walletwizardapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,9 @@ import com.mantequilla.walletwizardapp.R
 import com.mantequilla.walletwizardapp.databinding.FragmentSettingBinding
 import com.mantequilla.walletwizardapp.sharedpreference.AuthObject
 import com.mantequilla.walletwizardapp.sharedpreference.PreferenceHelper
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingFragment : Fragment() {
     private lateinit var binding : FragmentSettingBinding
     private lateinit var sharedPref: PreferenceHelper
@@ -44,7 +47,15 @@ class SettingFragment : Fragment() {
 
     private fun doLogoutAction() {
         sharedPref.clear()
-        findNavController().navigate(R.id.action_settingFragment_to_logout_nav)
+        try {
+            findNavController().navigate(R.id.action_settingFragment_to_logout_nav)
+        } catch (e: IllegalArgumentException) {
+            findNavController().navigate(R.id.loginFragment)
+            Log.e("Navigation Error", "IllegalArgumentException: ${e.message}")
+            // Optionally, you can navigate to a default destination or handle it in another way
+            // findNavController().navigate(R.id.default_destination)
+        }
     }
+
 
 }
